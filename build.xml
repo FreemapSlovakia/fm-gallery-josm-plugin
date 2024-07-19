@@ -1,0 +1,23 @@
+<project default="compile">
+  <target name="compile">
+    <mkdir dir="bin" />
+
+    <javac srcdir="src" destdir="bin">
+      <classpath>
+        <pathelement path="/home/martin/josm-tested.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="/home/martin/.josm/plugins/fm-gallery.jar" basedir="bin" includes="**/*">
+      <manifest>
+        <attribute name="Plugin-Mainversion" value="18494" />
+        <attribute name="Plugin-Version" value="1" />
+        <attribute name="Plugin-Class" value="sk.freemap.josm.plugins.gallery.DynamicPhotoPlugin" />
+        <attribute name="Plugin-Description" value="TODO" />
+        <attribute name="Author" value="Martin Ždila &lt;m.zdila@gmail.com&gt;" />
+      </manifest>
+    </jar>
+  </target>
+</project>
