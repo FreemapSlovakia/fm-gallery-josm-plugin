@@ -32,7 +32,7 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonString;
 
-public class DynamicPhotoPlugin extends Plugin implements LayerChangeListener, ZoomChangeListener, Runnable {
+public class FreemapGalleryPlugin extends Plugin implements LayerChangeListener, ZoomChangeListener, Runnable {
 
     private static final String API_URL_TEMPLATE = "https://backend.freemap.sk/gallery/pictures?by=bbox&bbox=%f,%f,%f,%f&fields=id&fields=user&fields=user&fields=takenAt&fields=title";
 
@@ -40,7 +40,7 @@ public class DynamicPhotoPlugin extends Plugin implements LayerChangeListener, Z
 
     private Thread thread;
 
-    public DynamicPhotoPlugin(PluginInformation info) {
+    public FreemapGalleryPlugin(PluginInformation info) {
         super(info);
 
         MainApplication.getLayerManager().addLayerChangeListener(this);
@@ -49,7 +49,7 @@ public class DynamicPhotoPlugin extends Plugin implements LayerChangeListener, Z
     }
 
     private void addMenuEntry() {
-        JosmAction action = new JosmAction("Freemap Gallery", "simplify", "desc", null, true, "greemapGallery", true) {
+        JosmAction action = new JosmAction("Freemap Gallery", "icon.svg", "Add dynamic Freemap.sk photos layer (from zoom 14)", null, false, null, false) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (photoLayer != null) {
@@ -65,7 +65,7 @@ public class DynamicPhotoPlugin extends Plugin implements LayerChangeListener, Z
                             .getLatLonBoundsBox(MainApplication.getMap().mapView.getProjectionBounds()));
                 }).start();
 
-                NavigatableComponent.addZoomChangeListener(DynamicPhotoPlugin.this);
+                NavigatableComponent.addZoomChangeListener(FreemapGalleryPlugin.this);
             }
         };
 
@@ -111,7 +111,8 @@ public class DynamicPhotoPlugin extends Plugin implements LayerChangeListener, Z
         }
 
         try {
-            String url = String.format(Locale.US, API_URL_TEMPLATE, bounds.getMinLon(), bounds.getMinLat(), bounds.getMaxLon(),
+            String url = String.format(Locale.US, API_URL_TEMPLATE, bounds.getMinLon(), bounds.getMinLat(),
+                    bounds.getMaxLon(),
                     bounds.getMaxLat());
 
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();

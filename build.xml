@@ -9,14 +9,28 @@
     </javac>
   </target>
 
+  <target name="clean">
+    <delete dir="bin"/>
+    <delete file="freemap-gallery.jar"/>
+  </target>
+
   <target name="jar" depends="compile">
-    <jar destfile="fm-gallery.jar" basedir="bin" includes="**/*">
+    <jar destfile="freemap-gallery.jar" basedir="bin" includes="**/*">
+      <fileset dir=".">
+        <include name="images/*" />
+      </fileset>
+
       <manifest>
         <attribute name="Plugin-Mainversion" value="18494" />
         <attribute name="Plugin-Version" value="1" />
-        <attribute name="Plugin-Class" value="sk.freemap.josm.plugins.gallery.DynamicPhotoPlugin" />
-        <attribute name="Plugin-Description" value="TODO" />
+        <attribute name="Plugin-Class" value="sk.freemap.josm.plugins.gallery.FreemapGalleryPlugin" />
+        <attribute name="Plugin-Description"
+          value="Adds dynamic Freemap.sk Gallery layer to Imagery to view photos from zoom 14" />
         <attribute name="Author" value="Martin Ždila &lt;m.zdila@gmail.com&gt;" />
+        <attribute name="Plugin-Minimum-Java-Version" value="17" />
+        <attribute name="Plugin-Link"
+          value="https://github.com/FreemapSlovakia/fm-gallery-josm-plugin/" />
+        <attribute name="Plugin-Icon" value="icon.svg" />
       </manifest>
     </jar>
   </target>
