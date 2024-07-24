@@ -30,7 +30,7 @@
         <attribute name="Plugin-Minimum-Java-Version" value="17" />
         <attribute name="Plugin-Link"
           value="https://github.com/FreemapSlovakia/fm-gallery-josm-plugin/" />
-        <attribute name="Plugin-Icon" value="icon.svg" />
+        <attribute name="Plugin-Icon" value="images/icon.svg" />
       </manifest>
     </jar>
   </target>

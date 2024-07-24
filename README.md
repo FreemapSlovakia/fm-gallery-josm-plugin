@@ -7,7 +7,7 @@ Quickly hacked JSOM plugin to show pictures from freemap.sk.
 First modify paths in [build.xml](./build.xml) file (`/home/martin/...`) and then run
 
 ```sh
-ant jar
+ant clean jar
 ```
 
 ## Usage
