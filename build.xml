@@ -10,7 +10,7 @@
   </target>
 
   <target name="jar" depends="compile">
-    <jar destfile="/home/martin/.josm/plugins/fm-gallery.jar" basedir="bin" includes="**/*">
+    <jar destfile="fm-gallery.jar" basedir="bin" includes="**/*">
       <manifest>
         <attribute name="Plugin-Mainversion" value="18494" />
         <attribute name="Plugin-Version" value="1" />
