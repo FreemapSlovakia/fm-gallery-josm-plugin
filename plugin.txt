@@ -9,4 +9,4 @@ freemap-gallery.jar;https://github.com/FreemapSlovakia/fm-gallery-josm-plugin/ra
 	Author: Martin Ždila <m.zdila@gmail.com>
 	Plugin-Minimum-Java-Version: 17
 	Plugin-Link: https://github.com/FreemapSlovakia/fm-gallery-josm-plugin/
-	Plugin-Icon: images/icon.svg
+	Plugin-Icon: https://raw.githubusercontent.com/FreemapSlovakia/fm-gallery-josm-plugin/main/images/icon.svg
